@@ -14,9 +14,15 @@ return {
 			defaults = {
 				file_ignore_patterns = {
 					".meta",
+					".png",
+					".asset",
+					".mp3",
+					".zip",
+					".prefab",
 					"Runner",
 					"External",
 					"Plugins",
+					"Library",
 				},
 				path_display = { "smart" },
 				mappings = {
