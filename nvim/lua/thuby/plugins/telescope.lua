@@ -15,7 +15,7 @@ return {
 				file_ignore_patterns = {
 					".meta",
 					".png",
-					".asset",
+					-- ".asset",
 					".mp3",
 					".zip",
 					".prefab",
@@ -71,7 +71,8 @@ return {
 			local opts = {}
 
 			opts = {
-				cwd = "~/jai/modules/",
+				cwd = "~/jai/",
+                search_dirs = { "modules/", "how_to/" },
 			}
 
 			require("telescope.builtin").live_grep(opts)
@@ -91,7 +92,8 @@ return {
 			local opts = {}
 
 			opts = {
-				cwd = "~/jai/modules/",
+				cwd = "~/jai/",
+                search_dirs = { "modules/", "how_to/" },
 			}
 
 			require("telescope.builtin").find_files(opts)
