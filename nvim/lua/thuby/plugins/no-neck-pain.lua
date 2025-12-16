@@ -1,12 +1,25 @@
 return {
-	"shortcuts/no-neck-pain.nvim",
+    "shortcuts/no-neck-pain.nvim",
 	opts = {
-		width = 200,
+		width = 150,
 		autocmds = {
-			enableOnVimEnter = true,
+			enableOnVimEnter = "safe",
 		},
 		mappings = {
-			enable = true,
+			enabled = true,
+		},
+		buffers = {
+			right = {
+				enabled = false,
+			},
+			scratchPad = {
+				enabled = true,
+				fileName = "notes",
+				location = "~/",
+			},
+			bo = {
+				filetype = "md",
+			},
 		},
 	},
 }
