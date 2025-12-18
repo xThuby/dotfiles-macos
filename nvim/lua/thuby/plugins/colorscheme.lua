@@ -47,9 +47,13 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		local comment = "#6DBA67"
-
 		require("tairiki").setup({
+			palette = "tomorrow",
+			transparent = true, -- don't set background colors
+			end_of_buffer = true, -- show end of buffer filler lines (tildes)
+			visual_bold = true, -- bolden visual selections
+			cmp_itemkind_reverse = true, -- reverse fg/bg on nvim-cmp item kinds
+
 			-- which plugins to enable
 			plugins = {
 				auto = true, -- auto detect installed plugins, currently lazy.nvim only
@@ -60,12 +64,15 @@ return {
 				--
 				-- setting a specific plugin manually overrides `all` and `auto`
 				treesitter = true,
+                cmp = true,
+                nvim_tree = true,
+                telescope = true,
 			},
 
 			-- optional function to modify or add colors to the palette
 			-- palette definitions are in lua/tairiki/palette
-			colors = function(colors, opts)
-				colors.comment = comment
+			colors = function(c, opts)
+				c.comment = "#6DBA67"
 			end,
 
 			-- optional function to override highlight groups

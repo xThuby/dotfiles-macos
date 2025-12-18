@@ -10,7 +10,7 @@ return {
 
 		nvimtree.setup({
 			view = {
-				width = 35,
+				width = 55,
 				relativenumber = true,
 			},
 			-- change folder arrow icons
@@ -41,7 +41,7 @@ return {
 				custom = { ".DS_Store" },
 			},
 			git = {
-				ignore = false,
+				ignore = true,
 			},
 		})
 

@@ -30,13 +30,13 @@ return {
 			-- 	async = false,
 			-- 	timeout_ms = 1000,
 			-- },
-			formatters = {
-				csharpier = {
-					command = "dotnet-csharpier",
-					args = { "--write-stdout" },
-					stdin = true,
-				},
-			},
+			-- formatters = {
+			-- 	csharpier = {
+			-- 		command = "csharpier",
+			-- 		args = { "--write-stdout" },
+			-- 		stdin = true,
+			-- 	},
+			-- },
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()

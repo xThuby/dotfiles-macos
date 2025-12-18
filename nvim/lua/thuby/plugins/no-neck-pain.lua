@@ -1,7 +1,7 @@
 return {
-    "shortcuts/no-neck-pain.nvim",
+	"shortcuts/no-neck-pain.nvim",
 	opts = {
-		width = 150,
+		width = 151,
 		autocmds = {
 			enableOnVimEnter = "safe",
 		},
