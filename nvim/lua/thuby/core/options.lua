@@ -55,8 +55,9 @@ if vim.g.neovide then
 
     vim.o.guifont = gui_font .. ":h" .. gui_font_size
 
-    vim.g.neovide_opacity = 0.8
-    vim.g.neovide_normal_opacity = 0.8
+    vim.g.neovide_opacity = 0.95
+    vim.g.neovide_normal_opacity = 0.45
+    vim.g.neovide_window_blurred = true
 
     -- Disable animations
     -- vim.g.neovide_cursor_animation_length = 0
