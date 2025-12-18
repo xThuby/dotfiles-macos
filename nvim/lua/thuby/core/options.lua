@@ -45,32 +45,35 @@ if vim.g.neovide then
 	local default_font_size = 14
 	local gui_font = "JetBrainsMonoNL Nerd Font"
 
-	function AdjustFontSize(amount)
-		gui_font_size = gui_font_size + amount
-		if amount == 0 then
-			gui_font_size = default_font_size
-		end
-		vim.o.guifont = gui_font .. ":h" .. gui_font_size
-	end
+    function AdjustFontSize(amount)
+        gui_font_size = gui_font_size + amount
+        if amount == 0 then
+            gui_font_size = default_font_size
+        end
+        vim.o.guifont = gui_font .. ":h" .. gui_font_size
+    end
 
-	vim.o.guifont = gui_font .. ":h" .. gui_font_size
+    vim.o.guifont = gui_font .. ":h" .. gui_font_size
 
-	-- Disable animations
-	-- vim.g.neovide_cursor_animation_length = 0
-	-- vim.g.neovide_cursor_antialiasing = false
-	-- vim.g.neovide_cursor_animate_in_insert_mode = false
-	-- vim.g.neovide_cursor_animate_command_line = false
-	-- vim.g.neovide_position_animation_length = 0
-	-- vim.g.neovide_scroll_animation_length = 0
-	-- vim.g.neovide_scroll_animation_far_lines = 0
+    vim.g.neovide_opacity = 0.8
+    vim.g.neovide_normal_opacity = 0.8
 
-	-- Speed up animations
-	function SetAnimSpeedScale(scale)
-		vim.g.neovide_position_animation_length = 0.15 * scale
-		vim.g.neovide_scroll_animation_length = 0.3 * scale
-		vim.g.neovide_cursor_animation_length = 0.13 * scale
-	end
+    -- Disable animations
+    -- vim.g.neovide_cursor_animation_length = 0
+    -- vim.g.neovide_cursor_antialiasing = false
+    -- vim.g.neovide_cursor_animate_in_insert_mode = false
+    -- vim.g.neovide_cursor_animate_command_line = false
+    -- vim.g.neovide_position_animation_length = 0
+    -- vim.g.neovide_scroll_animation_length = 0
+    -- vim.g.neovide_scroll_animation_far_lines = 0
 
-	local anim_speed_scale = 0
-	SetAnimSpeedScale(anim_speed_scale)
+    -- Speed up animations
+    function SetAnimSpeedScale(scale)
+        vim.g.neovide_position_animation_length = 0.15 * scale
+        vim.g.neovide_scroll_animation_length = 0.3 * scale
+        vim.g.neovide_cursor_animation_length = 0.13 * scale
+    end
+
+    local anim_speed_scale = 0
+    SetAnimSpeedScale(anim_speed_scale)
 end
