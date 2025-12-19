@@ -9,6 +9,7 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
+		local builtin = require("telescope.builtin")
 
 		telescope.setup({
 			defaults = {
@@ -61,9 +62,9 @@ return {
 			end
 
 			if is_inside_work_tree[cwd] then
-				require("telescope.builtin").git_files(opts)
+				builtin.git_files(opts)
 			else
-				require("telescope.builtin").find_files(opts)
+				builtin.find_files(opts)
 			end
 		end
 
@@ -75,7 +76,7 @@ return {
                 search_dirs = { "modules/", "how_to/" },
 			}
 
-			require("telescope.builtin").live_grep(opts)
+			builtin.live_grep(opts)
 		end
 
 		local grep_cursor_jai_modules = function()
@@ -85,7 +86,7 @@ return {
 				cwd = "~/jai/modules/",
 			}
 
-			require("telescope.builtin").grep_string(opts)
+			builtin.grep_string(opts)
 		end
 
 		local find_files_jai_modules = function()
@@ -96,7 +97,7 @@ return {
                 search_dirs = { "modules/", "how_to/" },
 			}
 
-			require("telescope.builtin").find_files(opts)
+			builtin.find_files(opts)
 		end
 
 		-- set keymaps
@@ -114,5 +115,6 @@ return {
 		keymap.set("n", "<leader>fjs", live_grep_jai_modules, { desc = "Live grep in jai modules" })
 		keymap.set("n", "<leader>fjc", grep_cursor_jai_modules, { desc = "Find string under cursor in jai modules" })
 		keymap.set("n", "<leader>fjf", find_files_jai_modules, { desc = "Fuzzy find files in jai modules" })
+        keymap.set("n", "<leader>uC", "<cmd>Telescope colorscheme enable_preview=true<cr>", { desc = "Colorscheme with preview" })
 	end,
 }

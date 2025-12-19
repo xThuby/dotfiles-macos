@@ -2,9 +2,7 @@ return {
 	"shortcuts/no-neck-pain.nvim",
 	opts = {
 		width = 151,
-		autocmds = {
-			enableOnVimEnter = "safe",
-		},
+		autocmds = { },
 		mappings = {
 			enabled = true,
 		},
