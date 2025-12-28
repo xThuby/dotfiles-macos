@@ -41,7 +41,14 @@ return {
 					"--line-number",
 					"--column",
 					"--smart-case",
+					"--hidden",
+					"--files",
 					"--trim",
+				},
+			},
+			pickers = {
+				find_files = {
+					find_command = { "rg", "--files", "--hidden", "--color", "never" },
 				},
 			},
 		})
@@ -73,7 +80,7 @@ return {
 
 			opts = {
 				cwd = "~/jai/",
-                search_dirs = { "modules/", "how_to/" },
+				search_dirs = { "modules/", "how_to/" },
 			}
 
 			builtin.live_grep(opts)
@@ -94,7 +101,7 @@ return {
 
 			opts = {
 				cwd = "~/jai/",
-                search_dirs = { "modules/", "how_to/" },
+				search_dirs = { "modules/", "how_to/" },
 			}
 
 			builtin.find_files(opts)
@@ -103,8 +110,8 @@ return {
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
 
-		keymap.set("n", "<D-p>", project_files, { desc = "Fuzzy find files in cwd" })
-		-- keymap.set("n", "<D-p>", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+		-- keymap.set("n", "<D-p>", project_files, { desc = "Fuzzy find files in cwd" })
+		keymap.set("n", "<D-p>", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 		keymap.set("n", "<D-b>", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find files in buffers" })
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
@@ -115,6 +122,11 @@ return {
 		keymap.set("n", "<leader>fjs", live_grep_jai_modules, { desc = "Live grep in jai modules" })
 		keymap.set("n", "<leader>fjc", grep_cursor_jai_modules, { desc = "Find string under cursor in jai modules" })
 		keymap.set("n", "<leader>fjf", find_files_jai_modules, { desc = "Fuzzy find files in jai modules" })
-        keymap.set("n", "<leader>uC", "<cmd>Telescope colorscheme enable_preview=true<cr>", { desc = "Colorscheme with preview" })
+		keymap.set(
+			"n",
+			"<leader>uC",
+			"<cmd>Telescope colorscheme enable_preview=true<cr>",
+			{ desc = "Colorscheme with preview" }
+		)
 	end,
 }
