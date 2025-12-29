@@ -41,9 +41,9 @@ vim.filetype.add({
 })
 
 if vim.g.neovide then
-	local gui_font_size = 14
-	local default_font_size = 14
-	local gui_font = "JetBrainsMonoNL Nerd Font"
+	local gui_font_size = 12
+	local default_font_size = 12
+	local gui_font = "Hack"
 
     function AdjustFontSize(amount)
         gui_font_size = gui_font_size + amount

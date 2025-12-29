@@ -115,7 +115,7 @@ return {
 
         vim.lsp.config("jails", {
             capabilities = capabilities,
-            cmd = { "/Users/oliverandreasthunaes/Jails/bin/jails" },
+            cmd = { "jails" },
 			filetypes = { "jai" },
             root_markers = { ".git", "build.jai", "first.jai", "jails.json", "modules" }
         })
