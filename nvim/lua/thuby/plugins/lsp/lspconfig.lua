@@ -83,6 +83,9 @@ return {
 			capabilities = capabilities,
 			filetypes = { "astro" },
 		})
+		vim.lsp.config("rust_analyzer", {
+			capabilities = capabilities,
+		})
 		-- vim.lsp.config("csharp_ls", {
 		-- 	capabilities = capabilities,
 		-- })

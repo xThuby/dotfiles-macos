@@ -11,70 +11,6 @@ return {
 		local actions = require("telescope.actions")
 		local builtin = require("telescope.builtin")
 
-		telescope.setup({
-			defaults = {
-				file_ignore_patterns = {
-					".meta",
-					".png",
-					-- ".asset",
-					".mp3",
-					".zip",
-					".prefab",
-					"Runner",
-					"External",
-					"Plugins",
-					"Library",
-				},
-				path_display = { "smart" },
-				mappings = {
-					i = {
-						["<C-k>"] = actions.move_selection_previous, -- move to prev result
-						["<C-j>"] = actions.move_selection_next, -- move to next result
-						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-					},
-				},
-				vimgrep_arguments = {
-					"rg",
-					"--color=never",
-					"--no-heading",
-					"--with-filename",
-					"--line-number",
-					"--column",
-					"--smart-case",
-					"--hidden",
-					"--files",
-					"--trim",
-				},
-			},
-			pickers = {
-				find_files = {
-					find_command = { "rg", "--files", "--hidden", "--color", "never" },
-				},
-			},
-		})
-
-		telescope.load_extension("fzf")
-
-		-- We cache the results of "git rev-parse"
-		-- Process creation is expensive in Windows, so this reduces latency
-		local is_inside_work_tree = {}
-
-		local project_files = function()
-			local opts = {} -- define here if you want to define something
-
-			local cwd = vim.fn.getcwd()
-			if is_inside_work_tree[cwd] == nil then
-				vim.fn.system("git rev-parse --is-inside-work-tree")
-				is_inside_work_tree[cwd] = vim.v.shell_error == 0
-			end
-
-			if is_inside_work_tree[cwd] then
-				builtin.git_files(opts)
-			else
-				builtin.find_files(opts)
-			end
-		end
-
 		local live_grep_jai_modules = function()
 			local opts = {}
 
@@ -106,6 +42,55 @@ return {
 
 			builtin.find_files(opts)
 		end
+
+		telescope.setup({
+			defaults = {
+				file_ignore_patterns = {
+					".meta",
+					".png",
+					-- ".asset",
+					".mp3",
+					".zip",
+					".prefab",
+					"Runner",
+					"External",
+					"Plugins",
+					"Library",
+				},
+				path_display = { "smart" },
+				mappings = {
+					i = {
+						["<C-k>"] = actions.move_selection_previous, -- move to prev result
+						["<C-j>"] = actions.move_selection_next, -- move to next result
+					},
+                    n = {
+						["<leader>qa"] = actions.send_to_qflist,
+						["<leader>qs"] = actions.send_selected_to_qflist,
+                    },
+				},
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+					"--hidden",
+					"--trim",
+				},
+			},
+			pickers = {
+				find_files = {
+					find_command = { "rg", "--files", "--hidden", "--color", "never" },
+				},
+			},
+			extensions = {
+				fzf = {},
+			},
+		})
+
+		telescope.load_extension("fzf")
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
