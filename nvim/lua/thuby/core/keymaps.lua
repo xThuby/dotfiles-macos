@@ -22,7 +22,8 @@ km.set("n", "<C-u>", "<C-u>zz")
 km.set("n", "n", "nzzzv")
 km.set("n", "N", "Nzzzv")
 
-km.set("x", "<leader>p", "\"_dP")
+-- km.set("x", "<leader>p", "\"_dP")
+km.set("v", "p", "\"_dP")
 
 km.set("n", "<leader>d", "\"_d")
 km.set("v", "<leader>d", "\"_d")
