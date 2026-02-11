@@ -7,14 +7,17 @@ km.set("n", "<ESC>", ":nohl<CR>", { desc = "Clear search highlights", silent = t
 km.set("n", "<leader>+", "<C-a>", { desc = "Increment number", silent = true })
 km.set("n", "<leader>-", "<C-x>", { desc = "Decrement number", silent = true })
 
+km.set("n", "j", "gj", { silent = true })
+km.set("n", "k", "gk", { silent = true })
+
 km.set("n", "<leader>1", ":only<CR>", { desc = "Close all but current split", silent = true })
 km.set("n", "<leader>2", "<C-w>s", { desc = "Split horizontally", silent = true })
 km.set("n", "<leader>3", "<C-w>v", { desc = "Split vertically", silent = true })
 km.set("n", "<leader>0", ":close<CR>", { desc = "Close current split", silent = true })
 km.set("n", "<leader>=", "<C-w>=", { desc = "Equalise splits", silent = true })
 
-km.set("v", "J", ":m '>+1<CR>gv=gv")
-km.set("v", "K", ":m '>-2<CR>gv=gv")
+km.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down", silent = true })
+km.set("v", "K", ":m '>-2<CR>gv=gv", { desc = "Move line up",   silent = true })
 
 km.set("n", "J", "mzJ`z")
 km.set("n", "<C-d>", "<C-d>zz")
