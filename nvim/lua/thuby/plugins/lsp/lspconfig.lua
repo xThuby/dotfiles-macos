@@ -116,12 +116,12 @@ return {
 			},
 		})
 
-        vim.lsp.config("jails", {
-            capabilities = capabilities,
-            cmd = { "/Users/oliverandreasthunaes/Jails/bin/jails" },
+		vim.lsp.config("jails", {
+			capabilities = capabilities,
+			cmd = { "/Users/oliverandreasthunaes/Jails/bin/jails" },
 			filetypes = { "jai" },
-            root_markers = { ".git", "build.jai", "first.jai", "jails.json", "modules" }
-        })
+			root_markers = { ".git", "build.jai", "first.jai", "jails.json", "modules" },
+		})
 
 		vim.lsp.enable("jails")
 	end,
