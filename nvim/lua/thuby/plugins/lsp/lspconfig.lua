@@ -92,14 +92,14 @@ return {
 
 		vim.lsp.config("roslyn", {
 			on_attach = function()
-				vim.lsp.inlay_hint.enable(true)
+				vim.lsp.inlay_hint.enable(false)
 			end,
 			settings = {
 				["csharp|inlay_hints"] = {
 					csharp_enable_inlay_hints_for_implicit_object_creation = false,
 					csharp_enable_inlay_hints_for_implicit_variable_types = false,
-					csharp_enable_inlay_hints_for_types = true,
-					dotnet_enable_inlay_hints_for_parameters = true,
+					csharp_enable_inlay_hints_for_types = false,
+					dotnet_enable_inlay_hints_for_parameters = false,
 				},
 				["csharp|code_lens"] = {
 					dotnet_enable_references_code_lens = true,

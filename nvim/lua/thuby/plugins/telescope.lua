@@ -43,8 +43,20 @@ return {
 			builtin.find_files(opts)
 		end
 
+		local live_grep_how_to_jai = function()
+			local opts = {}
+
+			opts = {
+				cwd = "~/jai/",
+				search_dirs = { "how_to/" },
+			}
+
+			builtin.live_grep(opts)
+		end
+
 		telescope.setup({
 			defaults = {
+                wrap_results = true,
 				file_ignore_patterns = {
 					".meta",
 					".png",
@@ -63,10 +75,10 @@ return {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
 						["<C-j>"] = actions.move_selection_next, -- move to next result
 					},
-                    n = {
+					n = {
 						["<leader>qa"] = actions.send_to_qflist,
 						["<leader>qs"] = actions.send_selected_to_qflist,
-                    },
+					},
 				},
 				vimgrep_arguments = {
 					"rg",
@@ -75,7 +87,7 @@ return {
 					"--with-filename",
 					"--line-number",
 					"--column",
-					"--smart-case",
+					-- "--smart-case",
 					"--hidden",
 					"--trim",
 				},
@@ -89,6 +101,13 @@ return {
 				fzf = {},
 			},
 		})
+
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "TelescopePreviewerLoaded",
+            callback = function(_)
+                vim.wo.wrap = true
+            end,
+        })
 
 		telescope.load_extension("fzf")
 
@@ -107,6 +126,7 @@ return {
 		keymap.set("n", "<leader>fjs", live_grep_jai_modules, { desc = "Live grep in jai modules" })
 		keymap.set("n", "<leader>fjc", grep_cursor_jai_modules, { desc = "Find string under cursor in jai modules" })
 		keymap.set("n", "<leader>fjf", find_files_jai_modules, { desc = "Fuzzy find files in jai modules" })
+		keymap.set("n", "<leader>fjh", live_grep_how_to_jai, { desc = "Live grep in jai how_tos" })
 		keymap.set(
 			"n",
 			"<leader>uC",

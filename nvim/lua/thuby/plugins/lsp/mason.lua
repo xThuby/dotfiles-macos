@@ -45,7 +45,6 @@ return {
 				"pyright",
 				"ols",
 				-- "csharp_ls",
-				"roslyn",
 				"clangd",
 				"pico8_ls",
 			},

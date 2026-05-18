@@ -36,7 +36,7 @@ km.set("n", "<D-j>", "<cmd>cprev<CR>zz")
 km.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 km.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-km.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<left><left><left>")
+km.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>//gI<left><left><left>")
 
 if vim.g.neovide then
     km.set("n", "<leader>f+", function() AdjustFontSize(1) end, { desc = "Increases font size", silent = true })
