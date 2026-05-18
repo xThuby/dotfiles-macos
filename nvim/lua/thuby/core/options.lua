@@ -25,10 +25,10 @@ opt.smartcase = true
 opt.hlsearch = true
 opt.incsearch = true
 
-opt.cursorline = true
+opt.cursorline = false
 
 opt.termguicolors = true
-opt.background = "dark"
+-- opt.background = "dark"
 opt.signcolumn = "yes"
 
 opt.backspace = "indent,eol,start"
@@ -86,6 +86,6 @@ if vim.g.neovide then
 		vim.g.neovide_cursor_animation_length = 0.13 * scale
 	end
 
-	local anim_speed_scale = 0.75
+	local anim_speed_scale = 0
 	SetAnimSpeedScale(anim_speed_scale)
 end
