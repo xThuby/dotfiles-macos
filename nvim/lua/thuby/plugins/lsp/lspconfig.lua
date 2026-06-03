@@ -7,6 +7,7 @@ return {
 		{ "folke/lazydev.nvim", opts = {} },
 	},
 	config = function()
+        --vim.lsp.log.set_level(vim.log.levels.DEBUG);
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -55,16 +56,28 @@ return {
 			end,
 		})
 
+        -- Disable highlighting from LSP
+        vim.api.nvim_create_autocmd("LspAttach", {
+            callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
+                if client then
+                    client.server_capabilities.semanticTokensProvider = nil
+                end
+            end,
+        })
+
+        -- Disable diagnostics
+        vim.diagnostic.enable(false);
+
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		-- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+		-- for type, icon in pairs(signs) do
+		-- 	local hl = "DiagnosticSign" .. type
+		-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+		-- end
 
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,

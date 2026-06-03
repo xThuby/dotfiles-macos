@@ -31,10 +31,10 @@ km.set("v", "p", "\"_dP")
 km.set("n", "<leader>d", "\"_d")
 km.set("v", "<leader>d", "\"_d")
 
-km.set("n", "<D-k>", "<cmd>cnext<CR>zz")
-km.set("n", "<D-j>", "<cmd>cprev<CR>zz")
-km.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-km.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+km.set("n", "<D-k>", "<cmd>cprev<CR>zz")
+km.set("n", "<D-j>", "<cmd>cnext<CR>zz")
+km.set("n", "<leader>k", "<cmd>lprev<CR>zz")
+km.set("n", "<leader>j", "<cmd>lnext<CR>zz")
 
 km.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>//gI<left><left><left>")
 
