@@ -3,7 +3,7 @@ return {
 	-- branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" },
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
@@ -11,12 +11,14 @@ return {
 		local actions = require("telescope.actions")
 		local builtin = require("telescope.builtin")
 
+        local jai_dir = "C:\\jai\\"
+
 		local live_grep_jai_modules = function()
 			local opts = {}
 
 			opts = {
-				cwd = "~/jai/",
-				search_dirs = { "modules/", "how_to/" },
+				cwd = jai_dir,
+				search_dirs = { "modules\\", "how_to\\" },
 			}
 
 			builtin.live_grep(opts)
@@ -26,7 +28,7 @@ return {
 			local opts = {}
 
 			opts = {
-				cwd = "~/jai/modules/",
+				cwd = jai_dir .. "modules\\",
 			}
 
 			builtin.grep_string(opts)
@@ -36,8 +38,8 @@ return {
 			local opts = {}
 
 			opts = {
-				cwd = "~/jai/",
-				search_dirs = { "modules/", "how_to/" },
+				cwd = jai_dir,
+				search_dirs = { "modules\\", "how_to\\" },
 			}
 
 			builtin.find_files(opts)
@@ -47,8 +49,8 @@ return {
 			local opts = {}
 
 			opts = {
-				cwd = "~/jai/",
-				search_dirs = { "how_to/" },
+				cwd = jai_dir,
+				search_dirs = { "how_to\\" },
 			}
 
 			builtin.live_grep(opts)
@@ -114,9 +116,9 @@ return {
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
 
-		-- keymap.set("n", "<D-p>", project_files, { desc = "Fuzzy find files in cwd" })
-		keymap.set("n", "<D-p>", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-		keymap.set("n", "<D-b>", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find files in buffers" })
+		-- keymap.set("n", "<M-p>", project_files, { desc = "Fuzzy find files in cwd" })
+		keymap.set("n", "<M-p>", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+		keymap.set("n", "<M-b>", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find files in buffers" })
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })

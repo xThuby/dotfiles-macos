@@ -11,12 +11,16 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({{import = "thuby.plugins"}, {import = "thuby.plugins.lsp"}}, {
-  checker = {
-    enabled = true,
-    notify = false,
-  },
-  change_detection = {
-    notify = false,
-  },
+require("lazy").setup({
+    {import = "thuby.plugins.disabled", enabled = false},
+    {import = "thuby.plugins"},
+    {import = "thuby.plugins.lsp"},
+}, {
+    checker = {
+        enabled = true,
+        notify = true,
+    },
+    change_detection = {
+        notify = false,
+    },
 })

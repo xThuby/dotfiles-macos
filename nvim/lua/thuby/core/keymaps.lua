@@ -10,6 +10,11 @@ km.set("n", "<leader>-", "<C-x>", { desc = "Decrement number", silent = true })
 km.set("n", "j", "gj", { silent = true })
 km.set("n", "k", "gk", { silent = true })
 
+km.set("n", "<C-j>", "<C-w>j", { silent = true })
+km.set("n", "<C-k>", "<C-w>k", { silent = true })
+km.set("n", "<C-l>", "<C-w>l", { silent = true })
+km.set("n", "<C-h>", "<C-w>h", { silent = true })
+
 km.set("n", "<leader>1", ":only<CR>", { desc = "Close all but current split", silent = true })
 km.set("n", "<leader>2", "<C-w>s", { desc = "Split horizontally", silent = true })
 km.set("n", "<leader>3", "<C-w>v", { desc = "Split vertically", silent = true })
@@ -37,6 +42,10 @@ km.set("n", "<leader>k", "<cmd>lprev<CR>zz")
 km.set("n", "<leader>j", "<cmd>lnext<CR>zz")
 
 km.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>//gI<left><left><left>")
+
+-- km.set("n", "<leader>ee", ":Explore<CR>", { desc = "Open file explorer" })
+-- km.set("n", "<leader>ev", ":Vexplore<CR>", { desc = "Open file explorer in vertical split" })
+-- km.set("n", "<leader>eh", ":Hexplore<CR>", { desc = "Open file explorer in vertical split" })
 
 if vim.g.neovide then
     km.set("n", "<leader>f+", function() AdjustFontSize(1) end, { desc = "Increases font size", silent = true })

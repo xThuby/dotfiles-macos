@@ -30,35 +30,13 @@ return {
 
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
-			automatic_enable = true,
+			automatic_enable = false,
 			ensure_installed = {
-				"astro",
-				"ts_ls",
-				"html",
-				"cssls",
-				"tailwindcss",
-				"svelte",
-				"lua_ls",
-				"graphql",
-				"emmet_ls",
-				"prismals",
-				"pyright",
-				"ols",
-				-- "csharp_ls",
-				"clangd",
-				"pico8_ls",
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
-				-- "prettierd", -- prettier formatter
-				"stylua", -- lua formatter
-				"black", -- python formatter
-                "ruff", -- python linter
-				"eslint_d",
-				-- "csharpier",
 			},
 		})
 	end,

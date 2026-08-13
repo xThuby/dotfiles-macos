@@ -15,7 +15,10 @@ opt.smartindent = true
 opt.autoindent = false
 
 opt.swapfile = false
-opt.backup = false
+opt.autoread = true
+opt.backup = true
+vim.opt.directory = vim.fn.expand("$HOME/tmp/nvim/swap//")
+vim.opt.backupdir = vim.fn.expand("$HOME/tmp/nvim/backup//")
 
 opt.wrap = true
 
@@ -25,7 +28,7 @@ opt.smartcase = true
 opt.hlsearch = true
 opt.incsearch = true
 
-opt.cursorline = false
+opt.cursorline = true
 
 opt.termguicolors = true
 -- opt.background = "dark"
@@ -41,7 +44,7 @@ opt.splitbelow = true
 opt.colorcolumn = "100"
 
 opt.scroll = 24
-opt.scrolloff = 24
+opt.scrolloff = 5
 opt.sidescrolloff = 24
 
 vim.filetype.add({
@@ -51,11 +54,13 @@ vim.filetype.add({
 	},
 })
 
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 if vim.g.neovide then
 	local nv = vim.g
 
-	local gui_font_size = 14
-	local default_font_size = 14
+	local gui_font_size = 10
+	local default_font_size = 10
 	local gui_font = "JetBrainsMonoNL Nerd Font"
 
 	function AdjustFontSize(amount)

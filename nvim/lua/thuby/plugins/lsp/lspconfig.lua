@@ -2,14 +2,14 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
+		-- "hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/lazydev.nvim", opts = {} },
 	},
 	config = function()
         --vim.lsp.log.set_level(vim.log.levels.DEBUG);
 		-- import cmp-nvim-lsp plugin
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		-- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap -- for conciseness
 
@@ -21,29 +21,10 @@ return {
 				local opts = { buffer = ev.buf, silent = true }
 
 				-- set keybinds
-				opts.desc = "Show LSP references"
-				keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
-
-				opts.desc = "Go to declaration"
-				keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
-
-				opts.desc = "Show LSP definitions"
-				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
-
-				opts.desc = "Show LSP implementations"
-				keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
-
-				opts.desc = "Show LSP type definitions"
-				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
-
 				opts.desc = "See available code actions"
 				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
-
-				opts.desc = "Show buffer diagnostics"
-				keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
 				opts.desc = "Show line diagnostics"
 				keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
@@ -66,11 +47,8 @@ return {
             end,
         })
 
-        -- Disable diagnostics
-        vim.diagnostic.enable(false);
-
 		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		-- local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -80,7 +58,7 @@ return {
 		-- end
 
 		vim.lsp.config("lua_ls", {
-			capabilities = capabilities,
+			-- capabilities = capabilities,
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -93,49 +71,60 @@ return {
 			},
 		})
 		vim.lsp.config("astro", {
-			capabilities = capabilities,
+			-- capabilities = capabilities,
 			filetypes = { "astro" },
 		})
 		vim.lsp.config("rust_analyzer", {
-			capabilities = capabilities,
+			-- capabilities = capabilities,
 		})
 		-- vim.lsp.config("csharp_ls", {
 		-- 	capabilities = capabilities,
 		-- })
 
 		vim.lsp.config("roslyn", {
+            -- capabilities = {
+            --     workspace = {
+            --         didChangeWatchedFiles = {
+            --             dynamicRegistration = false,
+            --         }
+            --     }
+            -- },
 			on_attach = function()
 				vim.lsp.inlay_hint.enable(false)
 			end,
 			settings = {
-				["csharp|inlay_hints"] = {
-					csharp_enable_inlay_hints_for_implicit_object_creation = false,
-					csharp_enable_inlay_hints_for_implicit_variable_types = false,
-					csharp_enable_inlay_hints_for_types = false,
-					dotnet_enable_inlay_hints_for_parameters = false,
-				},
+				["csharp|background_analysis"] = {
+                    -- Scope background analysis to open files instead of the
+                    -- whole solution to keep edits/renames responsive.
+                    dotnet_analyzer_diagnostics_scope = "openFiles",
+                    dotnet_compiler_diagnostics_scope = "openFiles",
+                },
 				["csharp|code_lens"] = {
-					dotnet_enable_references_code_lens = true,
+                    dotnet_provide_regex_completions = false,
+					dotnet_enable_references_code_lens = false,
+                    dotnet_show_name_completion_suggestions = false,
 				},
 				["csharp|completion"] = {
-					dotnet_show_completion_items_from_unimported_namespaces = true,
+					dotnet_show_completion_items_from_unimported_namespaces = false,
 				},
 				["csharp|formatting"] = {
 					dotnet_organize_imports_on_format = true,
 				},
 				["csharp|symbol_search"] = {
 					dotnet_search_reference_assemblies = true,
-				},
-			},
-		})
+                },
+            },
+        })
 
-		vim.lsp.config("jails", {
-			capabilities = capabilities,
-			cmd = { "/Users/oliverandreasthunaes/Jails/bin/jails" },
-			filetypes = { "jai" },
-			root_markers = { ".git", "build.jai", "first.jai", "jails.json", "modules" },
-		})
+        vim.lsp.config("jails", {
+            -- capabilities = capabilities,
+            cmd = { "C:\\Jails\\bin\\jails" },
+            filetypes = { "jai" },
+            root_markers = { ".git", "build.jai", "first.jai", "jails.json", "modules" },
+        })
 
-		vim.lsp.enable("jails")
-	end,
+        vim.lsp.enable("jails")
+
+        -- vim.diagnostic.enable(false)
+    end,
 }
