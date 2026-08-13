@@ -1,4 +1,4 @@
-local jai_dir = "C:\\jai\\"
+local jai_dir = "/Users/oliverandreasthunaes/jai/"
 
 local excludes = {
     "*.o",
