@@ -59,8 +59,8 @@ vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,te
 if vim.g.neovide then
 	local nv = vim.g
 
-	local gui_font_size = 10
-	local default_font_size = 10
+	local gui_font_size = 14
+	local default_font_size = 14
 	local gui_font = "JetBrainsMonoNL Nerd Font"
 
 	function AdjustFontSize(amount)
